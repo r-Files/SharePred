@@ -2,7 +2,8 @@
 
 #############################################################
 #############      Necessary packages:      #################
-list.of.packages <- c("quantmod", "ggplot2","magrittr","forecast","lubridate","tseries")
+if(!("pacman" %in% installed.packages()[,"Package"])) install.packages("pacman")
+pacman::p_load(quantmod, ggplot2, magrittr, forecast, lubridate, tseries)
 #############################################################
 
 #############################################################
@@ -16,16 +17,6 @@ end_date <- as.Date(today(tzone="GMT"))
 transformation <- 1
 forecast_error_hor <- 3
 #############################################################
-
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
-
-library('quantmod')
-library('ggplot2')
-library('magrittr')
-library('forecast')
-library('lubridate')
-library('tseries')
 
 #Get the index value of the DAX (=performance index) from Yahoo Finance
 #The object 'GDAXI' will be of type xts and contain 6 columns (5 price types + volume)
